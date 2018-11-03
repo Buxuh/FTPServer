@@ -35,6 +35,7 @@ public class Client {
     }
 
     public void start() throws IOException {
+
         outMsg = new DataOutputStream(clientSocket.getOutputStream());
         inMsg = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -47,6 +48,7 @@ public class Client {
         System.out.println("\n" + "You chose option " + choice + "\n");
 
         if (choice == 1) {
+            outMsg.write(choice);
             download();
             start();
 
@@ -69,7 +71,8 @@ public class Client {
     }
 
     private void download() throws IOException {
-        outMsg.writeInt(1);
+        //has an inputStream that receives file from server
+        //saves text file into resources
         
     }
 
