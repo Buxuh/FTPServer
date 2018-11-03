@@ -1,11 +1,11 @@
 package org.academiadecodigo.bootcamp;
 
-public enum MenuOptions {
+public enum  MenuOptions {
 
     VIEW_LIST(1, Message.VIEW_LIST),
     UPLOAD(2, Message.UPLOAD),
-    DOWNLOAD(3, Message.DOWNLOAD),
-    EXIT(4, Message.BYE_MESSAGE);
+    DOWNLOAD(3, Message.DOWNLOAD);
+
 
     private int options;
     private String message;

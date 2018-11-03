@@ -10,6 +10,7 @@ public class Server {
 
     private ExecutorService threadPool;
     private ServerSocket serverSocket;
+    private Integer input;
 
 
     private void init() {
@@ -66,20 +67,31 @@ public class Server {
         try {
 
             BufferedReader choice = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            Integer input = Integer.parseInt(choice.readLine());
+            input = Integer.parseInt(choice.readLine());
 
             System.out.println(choice);
-
-            switch (input){
-                case 1:
-                    MenuOptions.DOWNLOAD
-
-            }
 
 
         } catch (IOException e) {
             e.printStackTrace();
 
         }
+    }
+
+    public void choseOption(MenuOptions menuOptions){
+
+        switch (input){
+            case DOWNLOAD:
+                download();
+                break;
+            case UPLOAD:
+                upload();
+                break;
+            case VIEW_LIST:
+                viewFileList();
+                break;
+        }
+
+
     }
 }
