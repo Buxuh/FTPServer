@@ -71,27 +71,21 @@ public class Server {
 
             System.out.println(choice);
 
+            switch (input){
+                case 1:
+                    download();
+                    break;
+                case UPLOAD:
+                    upload();
+                    break;
+                case VIEW_LIST:
+                    viewFileList();
+                    break;
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
 
         }
-    }
-
-    public void choseOption(MenuOptions menuOptions){
-
-        switch (input){
-            case DOWNLOAD:
-                download();
-                break;
-            case UPLOAD:
-                upload();
-                break;
-            case VIEW_LIST:
-                viewFileList();
-                break;
-        }
-
-
     }
 }
