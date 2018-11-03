@@ -63,9 +63,20 @@ public class Client {
         }
         if (choice == 4) {
             System.out.println(Message.BYE_MESSAGE);
+            close();
             System.exit(0);
 
         }
+    }
+
+    private void close() {
+        try {
+            outMsg.close();
+            inMsg.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void download() throws IOException {
