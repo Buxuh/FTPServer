@@ -14,6 +14,7 @@ public class Client {
     private Socket clientSocket;
     private DataOutputStream outMsg;
     private BufferedReader inMsg;
+    private String filepath = "downloads/";
 
     private void run(String host, int port) {
         try {
@@ -50,8 +51,10 @@ public class Client {
         int choice = prompt.getUserInput(menu);
         System.out.println("\n" + "You chose option: " + options[choice-1]);
 
+        
         switch(choice){
-            case 1: list();
+            case 1:
+                FileHandler.listFiles();
                 break;
             case 2:
                 download();
@@ -68,16 +71,10 @@ public class Client {
 
 
     private void download() throws IOException {
-
+        FileHandler.sendFile();
     }
 
     private void upload() throws IOException {
-
-    }
-
-    private void list() throws IOException {
-
-
 
     }
 
