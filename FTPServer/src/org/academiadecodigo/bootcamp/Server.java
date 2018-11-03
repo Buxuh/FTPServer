@@ -61,9 +61,13 @@ public class Server {
         });
     }
 
+
     private void handleClient(Socket client) {
         try {
             PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
+            writer.println(client.getInputStream());
+            System.out.println(writer);
+
 
         } catch (IOException e) {
             e.printStackTrace();
