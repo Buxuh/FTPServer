@@ -10,10 +10,11 @@ public class Server {
 
     private ExecutorService threadPool;
     private ServerSocket serverSocket;
-    private Integer input;
 
 
     private void init() {
+        threadPool = Executors.newCachedThreadPool();
+
         int port = 8080;
 
         try {
@@ -36,7 +37,6 @@ public class Server {
             ex.printStackTrace();
 
         }
-        threadPool = Executors.newCachedThreadPool();
         return client;
 
     }
@@ -65,27 +65,31 @@ public class Server {
 
     private void handleClient(Socket client) {
         try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-            BufferedReader choice = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            input = Integer.parseInt(choice.readLine());
+            String inputData = bufferedReader.read()+"";
+            Integer input = Integer.parseInt(inputData);
 
-            System.out.println(choice);
+                switch (input) {
+                    case 1:
+                        System.out.println("option 1");
+                        //download();
+                        break;
+                    case 2:
+                        System.out.println("option 2");
+                        //file.upload();
+                        break;
+                    case 3:
+                        //file.viewList();
+                        System.out.println("option 3");
+                        break;
+                }
 
-            switch (input){
-                case 1:
-                    download();
-                    break;
-                case UPLOAD:
-                    upload();
-                    break;
-                case VIEW_LIST:
-                    viewFileList();
-                    break;
-            }
 
         } catch (IOException e) {
             e.printStackTrace();
 
         }
     }
+
 }

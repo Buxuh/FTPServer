@@ -1,8 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
-
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerRangeInputScanner;
+import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -28,59 +26,48 @@ public class Client {
         }
     }
 
-    public void greetings() {
+
+   private void init() {
         System.out.println(Message.WELCOME_MESSAGE + "\n");
         run("localhost", 8080);
 
     }
 
-    public void start() throws IOException {
+    private void start() throws IOException {
+
         outMsg = new DataOutputStream(clientSocket.getOutputStream());
         inMsg = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
         Prompt prompt = new Prompt(System.in, System.out);
-        IntegerInputScanner scanner = new IntegerRangeInputScanner(1, 4);
-        scanner.setMessage("1 - Download File\n2 - Upload File\n3 - List Files\n4 - Exit");
-        scanner.setError(Message.INVALID_OPTION + "\n");
 
-        int choice = prompt.getUserInput(scanner);
-        System.out.println("\n" + "You chose option " + choice + "\n");
+        String[] options = {MenuOptions.VIEW_LIST.getMessage(),
+                             MenuOptions.DOWNLOAD.getMessage(),
+                             MenuOptions.UPLOAD.getMessage(),
+                             Message.BYE_MESSAGE};
 
-        if (choice == 1) {
-            download();
-            start();
+        MenuInputScanner menu = new MenuInputScanner(options);
 
-        }
-        if (choice == 2) {
-            upload();
-            start();
+        int choice = prompt.getUserInput(menu);
+        System.out.println("\n" + "You chose option: " + options[choice-1]);
 
-        }
-        if (choice == 3) {
-            list();
-            start();
-
-        }
-        if (choice == 4) {
-            System.out.println(Message.BYE_MESSAGE);
-            close();
-            System.exit(0);
-
-        }
-    }
-
-    private void close() {
-        try {
-            outMsg.close();
-            inMsg.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        switch(choice){
+            case 1: list();
+                break;
+            case 2:
+                download();
+                break;
+            case 3:
+                upload();
+                break;
+            case 4:
+                clientSocket.close();
+                break;
         }
 
     }
+
 
     private void download() throws IOException {
-        outMsg.writeInt(1);
 
     }
 
@@ -89,13 +76,14 @@ public class Client {
     }
 
     private void list() throws IOException {
-        outMsg.writeInt(3);
+
+
 
     }
 
     public static void main(String[] args) {
         Client client = new Client();
-        client.greetings();
+        client.init();
 
     }
 }

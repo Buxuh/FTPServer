@@ -1,9 +1,18 @@
 package org.academiadecodigo.bootcamp;
 
-public interface FileHandler {
+import java.io.File;
 
-    byte[] receiveFile();
+public class FileHandler {
 
-    byte[] sendFile();
+    private String filePath = "resources/file.txt";
+    private File file;
+
+    public static byte[] receiveFile(){
+       return null;
+    }
+
+    public static byte[] sendFile(){
+        return null;
+    }
 
 }
