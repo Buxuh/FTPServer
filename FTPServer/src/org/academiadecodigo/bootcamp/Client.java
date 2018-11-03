@@ -70,6 +70,7 @@ public class Client {
 
     private void download() throws IOException {
         outMsg.writeInt(1);
+        
     }
 
     private void upload() throws IOException {
@@ -77,6 +78,7 @@ public class Client {
     }
 
     private void list() throws IOException {
+        outMsg.writeInt(3);
 
     }
 
