@@ -65,9 +65,16 @@ public class Server {
     private void handleClient(Socket client) {
         try {
 
-            DataInputStream choice = new DataInputStream(client.getInputStream());
+            BufferedReader choice = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            Integer input = Integer.parseInt(choice.readLine());
 
             System.out.println(choice);
+
+            switch (input){
+                case 1:
+                    MenuOptions.DOWNLOAD
+
+            }
 
 
         } catch (IOException e) {
