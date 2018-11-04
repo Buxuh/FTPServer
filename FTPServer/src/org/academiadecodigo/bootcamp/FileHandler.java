@@ -5,11 +5,10 @@ import java.io.*;
 
 public class FileHandler {
 
-    private static String filePath = "resources/test.txt";
+    private static String filePath = "resources/";
     private static File file;
     private static DataOutputStream out;
     private static BufferedReader in;
-
 
 
     public static byte[] receiveFile(){
@@ -26,7 +25,7 @@ public class FileHandler {
 
     public static String[] listFiles(){
 
-        File folder = new File("resources/");
+        File folder = new File(filePath);
         File[] listOfFiles = folder.listFiles();
 
         int fileId = 0;
@@ -44,5 +43,4 @@ public class FileHandler {
         }
         return files;
     }
-
 }

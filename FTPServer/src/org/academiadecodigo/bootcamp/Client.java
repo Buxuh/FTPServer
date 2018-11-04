@@ -10,7 +10,6 @@ public class Client {
     private Socket serverSocket;
     private PrintWriter outMsg;
     private BufferedReader inMsg;
-    private String filepath = "resources/";
     private Prompt prompt;
 
 
@@ -54,40 +53,31 @@ public class Client {
 
             choice = prompt.getUserInput(menu);
 
-            System.out.println("\n" + "You chose option: " + options[choice - 1]);
+            System.out.println("\n" + "You chose option: " + options[choice - 1] + "\n");
             outMsg.println(choice);
-
 
             String line;
             String result = "";
 
             while ((line = inMsg.readLine()) != null && !line.isEmpty()) {
 
-                result += (line+"\n");
+                result += (line + "\n");
             }
 
             if (line == null) {
                 return;
             }
 
-            if (result.equals(Message.BYE_MESSAGE)){
+            if (result.equals(Message.BYE_MESSAGE)) {
                 serverSocket.close();
                 return;
             }
 
             System.out.println(result);
+
         }
     }
 
-    /*
-    private void download() throws IOException {
-        FileHandler.sendFile();
-    }
-
-    private void upload() throws IOException {
-
-    }
-    */
     public static void main(String[] args) {
         Client client = new Client();
         client.init();
