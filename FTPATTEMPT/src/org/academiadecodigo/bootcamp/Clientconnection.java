@@ -33,10 +33,10 @@ public class ClientConnection implements Runnable {
                 displayFileList();
                 break;
             case 2:
-                FileHandler.sendFile(socket,"resources/test.txt");
+                FileHandler.sendFile(socket,"resources/strings.txt");
                 break;
             case 3:
-                //uploadFile();
+                FileHandler.receiveFile(socket);
                 break;
             case 4:
                 out.close();

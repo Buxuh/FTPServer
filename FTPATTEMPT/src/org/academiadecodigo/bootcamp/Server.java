@@ -19,14 +19,12 @@ public class Server {
             System.out.println("Waiting for clients");
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
     public void start() {
         while (true) {
             listen();
-
         }
     }
 

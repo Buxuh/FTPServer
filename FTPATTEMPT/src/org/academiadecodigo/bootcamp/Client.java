@@ -13,7 +13,7 @@ public class Client {
     private Prompt prompt;
     private BufferedReader inMsg;
     private PrintWriter outMsg;
-    private Socket socketGivenByServer;
+    private Socket serverSocket;
     private String host;
     private int port;
 
@@ -27,9 +27,9 @@ public class Client {
     public void init() {
         try {
             System.out.println("Welcome to our server");
-            socketGivenByServer = new Socket(host, port);
-            inMsg = new BufferedReader(new InputStreamReader(socketGivenByServer.getInputStream()));
-            outMsg = new PrintWriter(socketGivenByServer.getOutputStream(), true);
+            serverSocket = new Socket(host, port);
+            inMsg = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
+            outMsg = new PrintWriter(serverSocket.getOutputStream(), true);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class Client {
         String[] optionsInMenu = {"View List", "Download File", "Upload File", "Exit"};
         MenuInputScanner menuInputScanner = new MenuInputScanner(optionsInMenu);
 
-        while (socketGivenByServer.isBound()) {
+        while (serverSocket.isBound()) {
             int choice = prompt.getUserInput(menuInputScanner);
             System.out.println("\n" + "You chose option: " + optionsInMenu[choice - 1] + "\n");
             outMsg.println(choice);
@@ -49,14 +49,11 @@ public class Client {
                 case 1:
                     listFiles();
                     break;
-
                 case 2:
-                    FileHandler.receiveFile(socketGivenByServer);
+                    FileHandler.receiveFile(serverSocket);
                     break;
-
                 case 3:
                     break;
-
                 case 4:
                     close();
                     System.exit(1);
@@ -67,8 +64,7 @@ public class Client {
 
     private void close() throws IOException {
         System.out.println("Bye!");
-        socketGivenByServer.close();
-
+        serverSocket.close();
     }
 
     private void listFiles() throws IOException {
@@ -76,20 +72,17 @@ public class Client {
         String result = "";
 
         while ((line = inMsg.readLine()) != null && !line.isEmpty()) {
-
             result += (line + "\n");
-
         }
-        if (line == null) {
 
+        if (line == null) {
         }
 
         if (result.equals("EXIT")) {
-            socketGivenByServer.close();
-
+            serverSocket.close();
         }
-        System.out.println(result);
 
+        System.out.println(result);
     }
 
     public static void main(String[] args) {
