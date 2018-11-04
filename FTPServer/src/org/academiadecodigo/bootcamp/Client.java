@@ -55,7 +55,6 @@ public class Client {
         switch(choice){
             case 1:
                 printFiles(inMsg);
-                System.out.println("SSDF");
                 break;
             case 2:
                 download();
