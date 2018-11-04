@@ -8,6 +8,7 @@ public class FileHandler {
     private static String filePath = "resources/file.txt";
     private File file;
 
+
     public static byte[] receiveFile(){
 
         return null;
@@ -19,7 +20,7 @@ public class FileHandler {
         return null;
     }
 
-    static String[] listFiles(){
+    public static String[] listFiles(){
 
         File folder = new File("resources/");
         File[] listOfFiles = folder.listFiles();

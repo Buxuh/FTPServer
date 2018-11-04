@@ -31,7 +31,7 @@ public class Server {
 
         try {
             client = serverSocket.accept();
-            System.out.println("Client connected to server " );
+            System.out.println("Client connected to server ");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -64,20 +64,20 @@ public class Server {
 
     private void handleClient(Socket client) {
 
-       try {
+        try {
 
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
-            String inputData = bufferedReader.read()+"";
+            String inputData = reader.readLine();
             Integer input = Integer.parseInt(inputData);
 
-                switch (input) {
+            while (client.isBound()) {
+                /*switch (input) {
                     case 1:
                         String[] files = FileHandler.listFiles();
-                        for(int i = 0; i < files.length; i++){
-                            bufferedWriter.write(files[i] + "\n");
-                            bufferedWriter.flush();
+                        for (int i = 0; i < files.length; i++) {
+                            writer.println(files[i]);
                         }
                         break;
                     case 2:
@@ -87,7 +87,8 @@ public class Server {
                     case 3:
                         System.out.println("option upload");
                         break;
-                }
+                }*/
+            }
         } catch (IOException e) {
             e.printStackTrace();
 

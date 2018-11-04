@@ -1,25 +1,22 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 
 
 public class Client {
 
-    private Socket clientSocket;
-    private DataOutputStream outMsg;
+    private Socket serverSocket;
+    private PrintWriter outMsg;
     private BufferedReader inMsg;
-    private String filepath = "downloads/";
+    private String filepath = "resources/";
+    private Prompt prompt;
+
 
     private void run(String host, int port) {
         try {
-            clientSocket = new Socket(host, port);
-            start();
+            serverSocket = new Socket(host, port);
         } catch (IOException e) {
             System.out.println(Message.ERROR_CONNECTING);
             System.exit(0);
@@ -28,45 +25,57 @@ public class Client {
     }
 
     private void init() {
-        System.out.println(Message.WELCOME_MESSAGE + "\n");
         run("localhost", 8080);
+        prompt = new Prompt(System.in, System.out);
 
+        try {
+            outMsg = new PrintWriter(serverSocket.getOutputStream(), true);
+            inMsg = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
+            start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void start() throws IOException {
 
-        outMsg = new DataOutputStream(clientSocket.getOutputStream());
-        inMsg = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        Prompt prompt = new Prompt(System.in, System.out);
-
         String[] options = {MenuOptions.VIEW_LIST.getMessage(),
-                             MenuOptions.DOWNLOAD.getMessage(),
-                             MenuOptions.UPLOAD.getMessage(),
-                             Message.BYE_MESSAGE};
+                MenuOptions.DOWNLOAD.getMessage(),
+                MenuOptions.UPLOAD.getMessage(),
+                Message.BYE_MESSAGE};
 
         MenuInputScanner menu = new MenuInputScanner(options);
 
-        int choice = prompt.getUserInput(menu);
-        System.out.println("\n" + "You chose option: " + options[choice-1]);
+        int choice;
 
-        outMsg.writeByte(choice);
+        System.out.println(inMsg.readLine());
 
-        switch(choice){
-            case 1:
-                printFiles(inMsg);
-                break;
-            case 2:
-                download();
-                break;
-            case 3:
-                upload();
-                break;
-            case 4:
-                clientSocket.close();
-                break;
+        while (serverSocket.isBound()) {
+
+            choice = prompt.getUserInput(menu);
+
+            System.out.println("\n" + "You chose option: " + options[choice - 1]);
+
+            outMsg.println(choice);
+
+            String line;
+            String result = "";
+
+            while ((line = inMsg.readLine()) != null && !line.isEmpty()) {
+                result += (line+"\n");
+            }
+
+            if (line == null) {
+                return;
+            }
+
+            if (result.equals(Message.BYE_MESSAGE)){
+                serverSocket.close();
+                return;
+            }
+
+            System.out.println(result);
         }
-        start();
     }
 
     private void download() throws IOException {
@@ -80,21 +89,5 @@ public class Client {
     public static void main(String[] args) {
         Client client = new Client();
         client.init();
-    }
-
-    public String printFiles(BufferedReader in){
-
-        String line;
-        StringBuilder builder = new StringBuilder();
-
-        try {
-            while ((line = in.readLine()) != null && !line.isEmpty()) {
-                builder.append(line);
-                System.out.println(line);
-            }
-        }catch (IOException e){
-            System.err.println("Error showing files");
-        }
-        return builder.toString();
     }
 }
