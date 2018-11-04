@@ -1,12 +1,15 @@
 package org.academiadecodigo.bootcamp;
 
-import java.io.File;
+import java.io.*;
 
 
 public class FileHandler {
 
-    private static String filePath = "resources/file.txt";
-    private File file;
+    private static String filePath = "resources/test.txt";
+    private static File file;
+    private static DataOutputStream out;
+    private static BufferedReader in;
+
 
 
     public static byte[] receiveFile(){
@@ -14,10 +17,11 @@ public class FileHandler {
         return null;
     }
 
-    public static byte[] sendFile(){
+    public static void sendFile() throws IOException {
 
+        byte[] buffer = new byte[1024];
+        FileOutputStream out = new FileOutputStream(filePath);
 
-        return null;
     }
 
     public static String[] listFiles(){
@@ -40,4 +44,5 @@ public class FileHandler {
         }
         return files;
     }
+
 }

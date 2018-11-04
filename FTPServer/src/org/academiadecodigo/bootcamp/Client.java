@@ -55,13 +55,14 @@ public class Client {
             choice = prompt.getUserInput(menu);
 
             System.out.println("\n" + "You chose option: " + options[choice - 1]);
-
             outMsg.println(choice);
+
 
             String line;
             String result = "";
 
             while ((line = inMsg.readLine()) != null && !line.isEmpty()) {
+
                 result += (line+"\n");
             }
 
@@ -78,6 +79,7 @@ public class Client {
         }
     }
 
+    /*
     private void download() throws IOException {
         FileHandler.sendFile();
     }
@@ -85,7 +87,7 @@ public class Client {
     private void upload() throws IOException {
 
     }
-
+    */
     public static void main(String[] args) {
         Client client = new Client();
         client.init();

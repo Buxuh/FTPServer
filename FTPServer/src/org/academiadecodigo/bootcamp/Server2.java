@@ -14,6 +14,7 @@ public class Server2 {
 
     private final ServerSocket serverSocket;
     private final ExecutorService service;
+    public static final String ROOT = "resources/";
 
 
     public static void main(String[] args) {
@@ -84,15 +85,11 @@ public class Server2 {
 
             switch (message) {
                 case 1:
-                    String fileList = "";
-                    for (String file : FileHandler.listFiles()){
-                        System.out.println(file);
-                        fileList += (file + "\n");
-                    }
-                    send(fileList);
+                    displayFileList();
                     break;
                 case 2:
-                    //download();
+                    displayFileList();
+                    //chooseDownloadFile();
                     break;
                 case 3:
                     //upload();
@@ -107,6 +104,15 @@ public class Server2 {
         private void openStreams() throws IOException {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
+        }
+
+        public void displayFileList(){
+            String fileList = "";
+
+            for (String file : FileHandler.listFiles()){
+                fileList += (file + "\n");
+            }
+            send(fileList);
         }
 
         private void send(String message) {
