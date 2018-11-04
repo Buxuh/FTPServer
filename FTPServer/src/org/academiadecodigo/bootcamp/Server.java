@@ -31,7 +31,7 @@ public class Server {
 
         try {
             client = serverSocket.accept();
-            System.out.println("Client connected to server");
+            System.out.println("Client connected to server " );
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -53,35 +53,40 @@ public class Server {
         }
     }
 
-    private void dispatch(Socket client) {
+    private void dispatch(Socket clientSocket) {
         threadPool.submit(new Runnable() {
             @Override
             public void run() {
-                handleClient(client);
+
+                handleClient(clientSocket);
             }
         });
     }
 
 
     private void handleClient(Socket client) {
-        try {
+
+       try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
             String inputData = bufferedReader.read()+"";
             Integer input = Integer.parseInt(inputData);
 
                 switch (input) {
                     case 1:
-                        System.out.println("option 1");
-                        //download();
+                        String[] files = FileHandler.listFiles();
+                        for(int i = 0; i < files.length; i++){
+                            bufferedWriter.write(files[i] + "\n");
+                            bufferedWriter.flush();
+                        }
                         break;
                     case 2:
-                        System.out.println("option 2");
-                        //file.upload();
+                        System.out.println("option download");
+
                         break;
                     case 3:
-                        //file.viewList();
-                        System.out.println("option 3");
+                        System.out.println("option upload");
                         break;
                 }
 

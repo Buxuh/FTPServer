@@ -51,10 +51,11 @@ public class Client {
         int choice = prompt.getUserInput(menu);
         System.out.println("\n" + "You chose option: " + options[choice-1]);
 
-        
+        outMsg.writeByte(choice);
+
         switch(choice){
             case 1:
-                FileHandler.listFiles();
+                System.out.println(printFiles(inMsg));
                 break;
             case 2:
                 download();
@@ -67,6 +68,8 @@ public class Client {
                 break;
         }
 
+        start();
+
     }
 
 
@@ -78,9 +81,28 @@ public class Client {
 
     }
 
+
+
     public static void main(String[] args) {
         Client client = new Client();
         client.init();
 
+    }
+
+    public String printFiles(BufferedReader in){
+
+        String line = null;
+        StringBuilder builder = new StringBuilder();
+
+        try {
+            while ((line = in.readLine()) != null && !line.isEmpty()) {
+                builder.append(line);
+                System.out.println(line);
+            }
+        }catch (IOException e){
+            System.err.println("Error showing files");
+        }
+
+        return builder.toString();
     }
 }

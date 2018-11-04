@@ -19,20 +19,23 @@ public class FileHandler {
         return null;
     }
 
-    static void listFiles(){
+    static String[] listFiles(){
         File folder = new File("resources/");
         File[] listOfFiles = folder.listFiles();
         int fileId = 0;
+        String[] files = new String[listOfFiles.length];
 
         for (int i = 0; i <listOfFiles.length ; i++) {
             if(listOfFiles[i].isFile()){
                 fileId ++;
-                System.out.println("File Id: " + fileId + " - " + listOfFiles[i].getName());
+                files[i] = "File Id: " + fileId + " - " + listOfFiles[i].getName();
+              //  System.out.println("File Id: " + fileId + " - " + listOfFiles[i].getName());
             }else if (listOfFiles[i].isDirectory()){
                 System.out.println("Directory: " + listOfFiles[i].getName());
             }
         }
 
+        return files;
     }
 
 }
