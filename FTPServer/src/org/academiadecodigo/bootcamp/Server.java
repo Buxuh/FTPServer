@@ -41,7 +41,6 @@ public class Server {
 
     }
 
-
     public static void main(String[] args) {
         Server server = new Server();
         server.init();
@@ -63,10 +62,10 @@ public class Server {
         });
     }
 
-
     private void handleClient(Socket client) {
 
        try {
+
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(client.getInputStream()));
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
@@ -89,8 +88,6 @@ public class Server {
                         System.out.println("option upload");
                         break;
                 }
-
-
         } catch (IOException e) {
             e.printStackTrace();
 

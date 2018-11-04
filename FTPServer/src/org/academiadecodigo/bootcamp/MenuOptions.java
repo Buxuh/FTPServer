@@ -6,7 +6,6 @@ public enum  MenuOptions {
     UPLOAD(2, Message.UPLOAD),
     DOWNLOAD(3, Message.DOWNLOAD);
 
-
     private int options;
     private String message;
 

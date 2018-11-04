@@ -27,8 +27,7 @@ public class Client {
         }
     }
 
-
-   private void init() {
+    private void init() {
         System.out.println(Message.WELCOME_MESSAGE + "\n");
         run("localhost", 8080);
 
@@ -55,7 +54,8 @@ public class Client {
 
         switch(choice){
             case 1:
-                System.out.println(printFiles(inMsg));
+                printFiles(inMsg);
+                System.out.println("SSDF");
                 break;
             case 2:
                 download();
@@ -67,11 +67,8 @@ public class Client {
                 clientSocket.close();
                 break;
         }
-
         start();
-
     }
-
 
     private void download() throws IOException {
         FileHandler.sendFile();
@@ -81,17 +78,14 @@ public class Client {
 
     }
 
-
-
     public static void main(String[] args) {
         Client client = new Client();
         client.init();
-
     }
 
     public String printFiles(BufferedReader in){
 
-        String line = null;
+        String line;
         StringBuilder builder = new StringBuilder();
 
         try {
@@ -102,7 +96,6 @@ public class Client {
         }catch (IOException e){
             System.err.println("Error showing files");
         }
-
         return builder.toString();
     }
 }
