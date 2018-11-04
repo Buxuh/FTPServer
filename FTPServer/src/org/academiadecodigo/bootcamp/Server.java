@@ -14,8 +14,6 @@ public class Server {
 
     private final ServerSocket serverSocket;
     private final ExecutorService service;
-    public static final String ROOT = "resources/";
-
 
     public static void main(String[] args) {
 

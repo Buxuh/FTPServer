@@ -17,23 +17,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+            <state relative-caret-position="255">
+              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#main#0;class#Server2#0" />
                 <element signature="method#Server2#0;class#Server2#0" />
-                <element signature="method#start#0;class#Server#0" />
-                <element signature="method#waitConnection#0;class#Server#0" />
-                <element signature="class#ClientConnection#0;class#Server2#0" />
                 <element signature="e#1784#1785#0" expanded="true" />
                 <element signature="e#1828#1829#0" expanded="true" />
-                <element signature="method#run#0;class#ClientConnection#0;class#Server#0" />
                 <element signature="method#openStreams#0;class#ClientConnection#0;class#Server2#0" />
-                <element signature="method#displayFileList#0;class#ClientConnection#0;class#Server2#0" />
                 <element signature="e#5373#5374#0" expanded="true" />
                 <element signature="e#5417#5418#0" expanded="true" />
               </folding>
@@ -41,17 +35,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="587">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#run#0;class#Client#0" />
-                <element signature="method#init#0;class#Client#0" />
-                <element signature="method#start#0;class#Client#0" />
-                <element signature="method#main#0;class#Client#0" />
               </folding>
             </state>
           </provider>
@@ -60,12 +50,11 @@
       <file leaf-file-name="FileHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/FileHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="289">
+              <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
               <folding>
                 <element signature="method#receiveFile#0;class#FileHandler#0" />
                 <element signature="method#sendFile#0;class#FileHandler#0" />
-                <element signature="method#listFiles#0;class#FileHandler#0" />
               </folding>
             </state>
           </provider>
@@ -97,11 +86,11 @@
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Message.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Server2.java" />
         <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/FileHandler.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Server.java" />
-        <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Client.java" />
         <option value="$PROJECT_DIR$/resources/asdfsg.txt" />
         <option value="$PROJECT_DIR$/resources/hhh.txt" />
         <option value="$PROJECT_DIR$/resources/test.txt" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Server.java" />
+        <option value="$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Client.java" />
       </list>
     </option>
   </component>
@@ -272,15 +261,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541271988446</updated>
-      <workItem from="1541271991554" duration="43562000" />
+      <workItem from="1541271991554" duration="45162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43562000" />
+    <option name="totallyTimeSpent" value="45162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="978" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -291,7 +281,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.41203177" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.26220205" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.18477103" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -423,13 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/BufferedReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="176" column="15" selection-start-line="176" selection-start-column="15" selection-end-line="176" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/concurrent/ExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -500,18 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/FileHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="method#receiveFile#0;class#FileHandler#0" />
-            <element signature="method#sendFile#0;class#FileHandler#0" />
-            <element signature="method#listFiles#0;class#FileHandler#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/asdfsg.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -533,38 +504,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/FileHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="289">
+          <caret line="25" column="38" lean-forward="true" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#run#0;class#Client#0" />
-            <element signature="method#init#0;class#Client#0" />
-            <element signature="method#start#0;class#Client#0" />
-            <element signature="method#main#0;class#Client#0" />
+            <element signature="method#receiveFile#0;class#FileHandler#0" />
+            <element signature="method#sendFile#0;class#FileHandler#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/io/BufferedReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="390" column="18" selection-start-line="390" selection-start-column="18" selection-end-line="390" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        <state relative-caret-position="255">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#Server2#0" />
             <element signature="method#Server2#0;class#Server2#0" />
-            <element signature="method#start#0;class#Server#0" />
-            <element signature="method#waitConnection#0;class#Server#0" />
-            <element signature="class#ClientConnection#0;class#Server2#0" />
             <element signature="e#1784#1785#0" expanded="true" />
             <element signature="e#1828#1829#0" expanded="true" />
-            <element signature="method#run#0;class#ClientConnection#0;class#Server#0" />
             <element signature="method#openStreams#0;class#ClientConnection#0;class#Server2#0" />
-            <element signature="method#displayFileList#0;class#ClientConnection#0;class#Server2#0" />
             <element signature="e#5373#5374#0" expanded="true" />
             <element signature="e#5417#5418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/academiadecodigo/bootcamp/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

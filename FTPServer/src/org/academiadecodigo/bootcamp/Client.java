@@ -19,11 +19,11 @@ public class Client {
         } catch (IOException e) {
             System.out.println(Message.ERROR_CONNECTING);
             System.exit(0);
-
         }
     }
 
     private void init() {
+
         run("localhost", 8080);
         prompt = new Prompt(System.in, System.out);
 
@@ -74,7 +74,6 @@ public class Client {
             }
 
             System.out.println(result);
-
         }
     }
 
