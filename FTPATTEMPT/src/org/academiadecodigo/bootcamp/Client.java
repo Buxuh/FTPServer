@@ -2,10 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class Client {
@@ -53,6 +50,7 @@ public class Client {
                     FileHandler.receiveFile(serverSocket);
                     break;
                 case 3:
+                    FileHandler.sendFile(serverSocket, "resources/strings.txt");
                     break;
                 case 4:
                     close();

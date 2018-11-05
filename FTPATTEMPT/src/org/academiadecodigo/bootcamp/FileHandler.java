@@ -19,17 +19,20 @@ public class FileHandler {
         byte[] data = new byte[1024];
 
         try {
+            if (!(new File(file).exists())) {
+                System.err.println("resources folder doest not exits");
+                return;
+            }
 
             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(socket.getOutputStream());
-            BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(file)));
+            FileInputStream fileInputStream = new FileInputStream(new File(file));
 
-            while (bufferedInputStream.read(data) > 0 ) {
+            while (fileInputStream.read(data) > 0 ) {
                 bufferedOutputStream.write(data);
             }
 
             bufferedOutputStream.flush();
-            bufferedOutputStream.close();
-            bufferedInputStream.close();
+            fileInputStream.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,18 +49,21 @@ public class FileHandler {
         byte[] data = new byte[1024];
 
         try {
+            new File("downloads/").mkdirs();
             File newFile = new File("downloads/myFile.txt");
             newFile.createNewFile();
-            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(newFile));
+            FileOutputStream fileOutputStream = new FileOutputStream(newFile);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(socket.getInputStream());
 
-            while (bufferedInputStream.read(data) > 0 ) {
-                bufferedOutputStream.write(data);
+            while (bufferedInputStream.available() > 0 ) {
+                bufferedInputStream.read(data);
+                fileOutputStream.write(data);
             }
 
-            bufferedOutputStream.flush();
-            bufferedOutputStream.close();
-            bufferedInputStream.close();
+            bufferedInputStream.skip(bufferedInputStream.available());
+
+            fileOutputStream.flush();
+            fileOutputStream.close();
 
         } catch (IOException ex) {
             ex.printStackTrace();

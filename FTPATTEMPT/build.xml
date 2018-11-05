@@ -5,7 +5,8 @@
     <target name="init" description="Initializes properties">
         <property name="project.name" value="FTPServer" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.academiadecodigo.bootcamp.Server" />
+        <property name="Server.class" value="org.academiadecodigo.bootcamp.Server" />
+        <property name="Client.class" value="org.academiadecodigo.bootcamp.Client" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
@@ -34,10 +35,24 @@
     </target>
 
     <!-- Creates a JAR file -->
-    <target name="jarfile" description="Archives the code" depends="compile">
-        <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+    <target name="clientJar" description="Archives the code" depends="compile">
+        <jar destfile="${build.dir}/${project.name} - Client.jar" basedir="${classes.dir}">
             <manifest>
-                <attribute name="Main-Class" value="${main.class}" />
+                <attribute name="Main-Class" value="${Client.class}" />
+                <attribute name="Class-Path" value="${lib.dir}" />
+            </manifest>
+            <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+            <fileset dir=".">
+                <include name="**/${resources.dir}/**" />
+            </fileset>
+        </jar>
+    </target>
+
+    <!-- Creates a JAR file -->
+    <target name="serverJar" description="Archives the code" depends="compile">
+        <jar destfile="${build.dir}/${project.name} - Server.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${Server.class}" />
                 <attribute name="Class-Path" value="${lib.dir}" />
             </manifest>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
